@@ -1,0 +1,25 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: babe
+  labels:
+    app: babe
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: babe
+  template:
+    metadata:
+      labels:
+        app: babe
+    spec:
+      containers:
+        - name: babe
+          image: docker.io/phengbunath/babe:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
